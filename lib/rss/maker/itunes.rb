@@ -129,7 +129,7 @@ module RSS
       end
 
       class ITunesOwnerBase < Base
-        %w(itunes_name itunes_email).each do |name|
+        %w(itunes_email).each do |name|
           add_need_initialize_variable(name)
           attr_accessor(name)
         end
@@ -146,14 +146,13 @@ module RSS
                                     _not_set_required_variables)
             end
             current.itunes_owner ||= current.class::ITunesOwner.new
-            current.itunes_owner.itunes_name = @itunes_name
             current.itunes_owner.itunes_email = @itunes_email
           end
         end
 
         private
         def required_variable_names
-          %w(itunes_name itunes_email)
+          %w(itunes_email)
         end
       end
     end

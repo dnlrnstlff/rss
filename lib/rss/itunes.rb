@@ -209,7 +209,6 @@ module RSS
 
       install_must_call_validator(ITUNES_PREFIX, ITUNES_URI)
       [
-        ["name"],
         ["email"],
       ].each do |name,|
         ITunesBaseModel::ELEMENT_INFOS << name
@@ -221,8 +220,7 @@ module RSS
           super
         else
           super()
-          self.itunes_name = args[0]
-          self.itunes_email = args[1]
+          self.itunes_email = args[1] || args[0]
         end
       end
 
@@ -237,7 +235,6 @@ module RSS
 
       def setup_maker_element(owner)
         super(owner)
-        owner.itunes_name = itunes_name
         owner.itunes_email = itunes_email
       end
     end
